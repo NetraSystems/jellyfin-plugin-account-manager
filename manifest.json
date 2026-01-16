@@ -9,7 +9,7 @@
     "versions": [
       {
         "version": "1.0.0",
-        "changelog": "Initial release: Automatic account blocking, configurable inactivity period, scheduled task, detailed logging",
+        "changelog": "See release notes",
         "targetAbi": "10.11.0.0",
         "sourceUrl": "https://github.com/NetraSystems/jellyfin-plugin-account-manager/releases/download/v1.0.0/jellyfin-plugin-account-manager-v1.0.0.zip",
         "checksum": "450f9393c5fc52706ae598116c7361c51440a0892eff359dbe58169095e1c25f",
