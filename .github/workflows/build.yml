@@ -1,0 +1,87 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Build
+        run: dotnet build -c Release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jellyfin-plugin-account-manager
+          path: bin/Release/net9.0/JellyfinAccountManager.dll
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: jellyfin-plugin-account-manager
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: JellyfinAccountManager.dll
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update manifest
+        run: |
+          # Extract version from tag
+          VERSION=${GITHUB_REF#refs/tags/v}
+          
+          # Update manifest.json
+          cat > manifest.json << MANIFEST
+          [
+            {
+              "guid": "b174a844-ac6c-42bc-a58a-8e93c7cb7912",
+              "name": "Account Manager",
+              "description": "Automatically blocks user accounts after a configured period of inactivity",
+              "overview": "Manage inactive user accounts automatically",
+              "owner": "${{ github.repository_owner }}",
+              "category": "Authentication",
+              "versions": [
+                {
+                  "version": "${VERSION}",
+                  "changelog": "See release notes",
+                  "targetAbi": "10.11.0.0",
+                  "sourceUrl": "https://github.com/${{ github.repository }}/releases/download/v${VERSION}/JellyfinAccountManager.dll",
+                  "checksum": "$(sha256sum JellyfinAccountManager.dll | cut -d' ' -f1)",
+                  "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+                }
+              ]
+            }
+          ]
+          MANIFEST
+
+      - name: Commit manifest
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout main || git checkout -b main
+          git add manifest.json
+          git commit -m "Update manifest for v${GITHUB_REF#refs/tags/v}" || true
+          git push origin main || true
