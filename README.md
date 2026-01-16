@@ -22,7 +22,7 @@ Automatically manage inactive user accounts in your Jellyfin server.
 
 ### Method 2: Manual Installation
 
-1. Download the latest `JellyfinAccountManager.dll` from [Releases](https://github.com/YOUR-USERNAME/jellyfin-plugin-account-manager/releases)
+1. Download the latest `JellyfinAccountManager.dll` from [Releases](https://github.com/NetraSystems/jellyfin-plugin-account-manager/releases)
 2. Place it in your Jellyfin plugins directory:
    - Linux: `/var/lib/jellyfin/plugins/`
    - Windows: `C:\ProgramData\Jellyfin\Server\plugins\`
@@ -73,7 +73,7 @@ MIT License - See LICENSE file for details
 ## Support
 
 If you encounter any issues or have questions:
-- Open an issue on [GitHub](https://github.com/YOUR-USERNAME/jellyfin-plugin-account-manager/issues)
+- Open an issue on [GitHub](https://github.com/NetraSystems/jellyfin-plugin-account-manager/issues)
 - Check the Jellyfin logs for detailed error messages
 
 ## Changelog
