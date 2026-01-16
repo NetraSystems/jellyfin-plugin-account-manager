@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Account Manager</title>
+</head>
+<body>
+    <div id="AccountManagerConfigPage" data-role="page" class="page type-interior pluginConfigurationPage" data-require="emby-input,emby-button,emby-select,emby-checkbox">
+        <div data-role="content">
+            <div class="content-primary">
+                <form id="AccountManagerConfigForm">
+                    <div class="verticalSection">
+                        <div class="sectionTitleContainer flex align-items-center">
+                            <h2 class="sectionTitle">Account Manager Settings</h2>
+                        </div>
+
+                        <p style="margin: 1em 0;">
+                            This plugin automatically blocks user accounts that have been inactive for a specified period.
+                        </p>
+
+                        <div class="inputContainer">
+                            <label class="inputLabel inputLabelUnfocused" for="blockAfterDays">
+                                Block accounts after (days):
+                            </label>
+                            <input id="blockAfterDays" 
+                                   type="number" 
+                                   is="emby-input" 
+                                   min="1" 
+                                   max="365" 
+                                   step="1" 
+                                   class="emby-input"
+                                   required />
+                            <div class="fieldDescription">
+                                Number of days of inactivity before an account is automatically blocked (default: 30).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="verticalSection">
+                        <div class="sectionTitleContainer">
+                            <h2 class="sectionTitle">Information</h2>
+                        </div>
+                        <p>
+                            The scheduled task "Check for Inactive Accounts" runs daily at 3:00 AM by default.
+                            You can manually run the task or change the schedule in the Dashboard → Scheduled Tasks section.
+                        </p>
+                        <p>
+                            <strong>Note:</strong> Users are considered inactive if they haven't logged in or had any activity 
+                            for the configured number of days.
+                        </p>
+                    </div>
+
+                    <div>
+                        <button is="emby-button" type="submit" class="raised button-submit block">
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var AccountManagerConfig = {
+                pluginUniqueId: 'b174a844-ac6c-42bc-a58a-8e93c7cb7912'
+            };
+
+            document.getElementById('AccountManagerConfigPage').addEventListener('pageshow', function() {
+                Dashboard.showLoadingMsg();
+
+                ApiClient.getPluginConfiguration(AccountManagerConfig.pluginUniqueId).then(function(config) {
+                    document.getElementById('blockAfterDays').value = config.BlockAfterDays || 30;
+                    Dashboard.hideLoadingMsg();
+                });
+            });
+
+            document.getElementById('AccountManagerConfigForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                Dashboard.showLoadingMsg();
+
+                ApiClient.getPluginConfiguration(AccountManagerConfig.pluginUniqueId).then(function(config) {
+                    config.BlockAfterDays = parseInt(document.getElementById('blockAfterDays').value) || 30;
+
+                    ApiClient.updatePluginConfiguration(AccountManagerConfig.pluginUniqueId, config).then(function(result) {
+                        Dashboard.processPluginConfigurationUpdateResult(result);
+                    });
+                });
+
+                return false;
+            });
+        </script>
+    </div>
+</body>
+</html>

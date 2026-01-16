@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/JellyfinAccountManager.csproj": {}
+  },
+  "projects": {
+    "/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/JellyfinAccountManager.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/JellyfinAccountManager.csproj",
+        "projectName": "JellyfinAccountManager",
+        "projectPath": "/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/JellyfinAccountManager.csproj",
+        "packagesPath": "/home/dev/.nuget/packages/",
+        "outputPath": "/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/dev/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/lib/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Jellyfin.Controller": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[10.11.5, )"
+            },
+            "Jellyfin.Data": {
+              "target": "Package",
+              "version": "[10.11.5, )"
+            },
+            "Jellyfin.Model": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[10.11.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

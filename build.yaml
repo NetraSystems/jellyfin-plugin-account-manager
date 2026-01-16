@@ -1,0 +1,19 @@
+---
+name: "JellyfinAccountManager"
+guid: "b174a844-ac6c-42bc-a58a-8e93c7cb7912"
+version: "1.0.0"
+targetAbi: "10.11.0.0"
+framework: "net9.0"
+owner: "dein-github-username"
+overview: "Automatically blocks user accounts after a configured period of inactivity"
+description: "Account Manager is a Jellyfin plugin that automatically disables user accounts that have been inactive for a specified number of days. Perfect for managing shared Jellyfin instances and ensuring inactive users don't accumulate."
+category: "Authentication"
+artifacts:
+  - "JellyfinAccountManager.dll"
+changelog: |
+  ## v1.0.0
+  - Initial release
+  - Automatic account blocking based on inactivity
+  - Configurable inactivity period
+  - Scheduled task runs daily at 3 AM
+  - Detailed logging of all actions

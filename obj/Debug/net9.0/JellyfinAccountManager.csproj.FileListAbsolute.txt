@@ -1,0 +1,12 @@
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/Debug/net9.0/JellyfinAccountManager.csproj.AssemblyReference.cache
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/Debug/net9.0/JellyfinAccountManager.GeneratedMSBuildEditorConfig.editorconfig
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/Debug/net9.0/JellyfinAccountManager.AssemblyInfoInputs.cache
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/Debug/net9.0/JellyfinAccountManager.AssemblyInfo.cs
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/Debug/net9.0/JellyfinAccountManager.csproj.CoreCompileInputs.cache
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/bin/Debug/net9.0/JellyfinAccountManager.deps.json
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/bin/Debug/net9.0/JellyfinAccountManager.dll
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/bin/Debug/net9.0/JellyfinAccountManager.pdb
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/Debug/net9.0/JellyfinAccountManager.dll
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/Debug/net9.0/refint/JellyfinAccountManager.dll
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/Debug/net9.0/JellyfinAccountManager.pdb
+/home/dev/dev/jellyfin-dev/plugins/JellyfinAccountManager/obj/Debug/net9.0/ref/JellyfinAccountManager.dll
