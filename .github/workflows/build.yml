@@ -1,5 +1,11 @@
 name: Build and Release
 
+# Permissions
+permissions:
+  contents: write
+  packages: write
+  actions: read
+
 on:
   push:
     tags:
