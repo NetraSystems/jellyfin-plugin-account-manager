@@ -7,9 +7,12 @@ namespace JellyfinAccountManager;
 
 public class Plugin : BasePlugin<PluginConfiguration>
 {
+    public static Plugin? Instance { get; private set; }
+
     public Plugin(IApplicationPaths applicationPaths, IXmlSerializer xmlSerializer) 
         : base(applicationPaths, xmlSerializer)
     {
+        Instance = this;
     }
 
     public override string Name => "Account Manager";

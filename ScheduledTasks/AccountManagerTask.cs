@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using MediaBrowser.Controller.Library;
 using MediaBrowser.Model.Tasks;
 using Microsoft.Extensions.Logging;
-using JellyfinAccountManager.Configuration;
 using Jellyfin.Data;
 using Jellyfin.Database.Implementations.Enums;
+using MediaBrowser.Common.Plugins;
+using MediaBrowser.Controller.Plugins;
 
 namespace JellyfinAccountManager.ScheduledTasks;
 
@@ -19,13 +20,11 @@ public class AccountManagerTask : IScheduledTask
 {
     private readonly IUserManager _userManager;
     private readonly ILogger<AccountManagerTask> _logger;
-    private readonly Plugin _plugin;
 
-    public AccountManagerTask(IUserManager userManager, ILogger<AccountManagerTask> logger, Plugin plugin)
+    public AccountManagerTask(IUserManager userManager, ILogger<AccountManagerTask> logger)
     {
         _userManager = userManager;
         _logger = logger;
-        _plugin = plugin;
     }
 
     public string Name => "Check for Inactive Accounts";
@@ -40,7 +39,15 @@ public class AccountManagerTask : IScheduledTask
     {
         _logger.LogInformation("Starting inactive account check...");
 
-        var config = _plugin.Configuration;
+        // Get plugin instance from PluginManager
+        var plugin = Plugin.Instance;
+        if (plugin == null)
+        {
+            _logger.LogError("Plugin instance is null");
+            return;
+        }
+
+        var config = plugin.Configuration;
         var blockAfterDays = config.BlockAfterDays;
 
         if (blockAfterDays <= 0)
