@@ -1,0 +1,20 @@
+[
+  {
+    "guid": "b174a844-ac6c-42bc-a58a-8e93c7cb7912",
+    "name": "Account Manager",
+    "description": "Automatically blocks user accounts after a configured period of inactivity",
+    "overview": "Manage inactive user accounts automatically",
+    "owner": "NetraSystems",
+    "category": "Authentication",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "changelog": "Initial release with automatic account blocking based on inactivity",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/NetraSystems/jellyfin-plugin-account-manager/releases/download/v1.0.0/JellyfinAccountManager.dll",
+        "checksum": "PLACEHOLDER",
+        "timestamp": "2025-01-16T12:00:00Z"
+      }
+    ]
+  }
+]
